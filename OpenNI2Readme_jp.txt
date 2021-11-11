@@ -2,15 +2,17 @@
 //
 //
 // aeroTAP OpenNI2 Driver
-// Last Updated: 2020.7.28
+// Last Updated: 2020.11.11
 //
 // Copyright nextEDGE Technology K.K. All rights reserved.
 //
 ///////////////////////////////////////////////
 
 ** Updates **
+2020.11.11 v1.8
+-includes aeroTAP CAM library update
 2020.7.28 v1.8
--Updated filering for depthmap.
+-Updated filtering for depthmap.
 2020.7.6 v1.6
 -Updated aeroTAP Library DLL, improved depthmap.
 2020.4.29 v1.6
