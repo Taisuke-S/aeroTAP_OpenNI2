@@ -9,6 +9,10 @@
 ///////////////////////////////////////////////
 
 ** Updates **
+2022.4.28 v2.4
+-Added aeroTAP 3D USB G2 camera supprot
+-Improved Depthmap Filtering
+- USB 2.0 Support
 2020.11.11 v1.8
 -includes aeroTAP CAM library update
 2020.7.28 v1.8
