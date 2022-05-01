@@ -2,9 +2,9 @@
 //
 //
 // aeroTAP OpenNI2 Driver 
-// Last Updated: 2020.7.28
+// Last Updated: 2021.10.28
 //
-// Copyright nextEDGE Technology K.K. All rights reserved.
+// Copyright 2021 nextEDGE Technology K.K. All rights reserved.
 //
 ///////////////////////////////////////////////
 
@@ -12,7 +12,11 @@
 2022.4.28 v2.4
 -Added aeroTAP 3D USB G2 camera supprot
 -Improved Depthmap Filtering
-- USB 2.0 Support
+2021.10.13 v2.1
+-Fixed issue usinng camera with USB2.0 connection
+2021.10.13 v2.1
+-Support aeroTAP 3D G2
+-Using the latest aeroTAP 
 2020.7.28 v1.8
 -Updated filering for depthmap.
 2020.7.6 v1.6
@@ -79,7 +83,7 @@ Prerequisets:
 	/Bin/x64-Release
 - RaspberryPi2/3
 	/Bin/Arm-Release
-- Dragonboard
+- Dragonboard, Nano Pi NEO3
 	/Bin/aarch64-Release
 
 NOTE: For Linux, 
@@ -92,7 +96,7 @@ NOTE: For Linux,
 1. Copy files on x86 or x64 foler to OpenNI/Drivers folder. i.e.
    -[Program Folder]   
        - aeroTAP_CAM.dll
-       - eSPDI.dll
+       - eSPDI_DM.dll
        - OPENNI.ini
    -OpenNI2/Drivers
        - aeroTAP.dll

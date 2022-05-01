@@ -2,9 +2,9 @@
 //
 //
 // aeroTAP OpenNI2 Driver
-// Last Updated: 2020.11.11
+// Last Updated: 2021.10.28
 //
-// Copyright nextEDGE Technology K.K. All rights reserved.
+// Copyright 2021 nextEDGE Technology K.K. All rights reserved.
 //
 ///////////////////////////////////////////////
 
@@ -12,11 +12,13 @@
 2022.4.28 v2.4
 -Added aeroTAP 3D USB G2 camera supprot
 -Improved Depthmap Filtering
-- USB 2.0 Support
-2020.11.11 v1.8
--includes aeroTAP CAM library update
+2021.10.13 v2.1
+-Fixed issue usinng camera with USB2.0 connection
+2021.10.13 v2.1
+-Support aeroTAP 3D G2
+-Using the latest aeroTAP 
 2020.7.28 v1.8
--Updated filtering for depthmap.
+-Updated filering for depthmap.
 2020.7.6 v1.6
 -Updated aeroTAP Library DLL, improved depthmap.
 2020.4.29 v1.6
@@ -61,7 +63,7 @@ Prerequisets:
 	/Bin/x64-Release
 - RaspberryPi2/3
 	/Bin/Arm-Release
-- Dragonboard
+- Dragonboard, Nano Pi NEO3
 	/Bin/aarch64-Release
 
 NOTE: For Linux, 
@@ -73,58 +75,58 @@ NOTE: For Linux,
 -----------------
 
 
-�f�o�C�X���� "aeroTAP" �Ƃ��Ďw�肵�܂��B
+デバイス名を "aeroTAP" として指定します。
 
 Device name = aeroTAP
 
 // OpenNI2
-��:  OpenNI2 �̃T���v���R�[�h SimpleViewer�ł́A���s�̍ۂɃf�o�C�X�����w�肷�邱�Ƃ��ł��܂��B
+例:  OpenNI2 のサンプルコード SimpleViewerでは、実行の際にデバイス名を指定することができます。
 SimpleViewer.exe aeroTAP
 
 
 // Nite2
-��:  Nite2 �T���v���R�[�h SimpleViewer�ł́A���s�̍ۂɃf�o�C�X����-device�Ŏw�肷�邱�Ƃ��ł��܂��B
+例:  Nite2 サンプルコード SimpleViewerでは、実行の際にデバイス名を-deviceで指定することができます。
 UserView.exe -device aeroTAP
 
 // PCL:
-��:  Nite2 �T���v���R�[�h SimpleViewer�ł́A���s�̍ۂɃf�o�C�X�����w�肷�邱�Ƃ��ł��܂��B
+例:  Nite2 サンプルコード SimpleViewerでは、実行の際にデバイス名を指定することができます。
 pcl_openni2_viewer.exe aeroTAP
 
 
 // OPENNI.exe
- OPENNI2�݊��A�v���P�[�V���������s����ꍇ�A�f�o�C�X�̎w��́AOPENNI.INI�t�@�C�����������A[Device]�p�����[�^�Ɏw�肵�܂��B�T���v���Ɋ܂܂��OPENNI.INI�t�@�C����OPENNI2.DLL�Ɠ����t�H���_�[�ɏ������Ă��������B
-��:
+ OPENNI2互換アプリケーションを実行する場合、デバイスの指定は、OPENNI.INIファイルを準備し、[Device]パラメータに指定します。サンプルに含まれるOPENNI.INIファイルをOPENNI2.DLLと同じフォルダーに準備してください。
+例:
 [Device]
 Override="aeroTAP"
 
 
 
-// �T���v���̗��p���@:
-1. �h���C�o�́Ax86�܂���x64�t�H���_�[�ɂ���܂��B�h���C�o�@(aeroTAP.DLL, aeroTAP.ini )�́AOpenNI/Drivers�t�H���_�[�ɃR�s�[���܂��B���̑��A�T�u�t�@�C�� ( aeroTAP_CAM.DLL, eSPDI.DLL, OPENNI.INI)�t�@�C�����A�v���P�[�V�����Ɠ����t�H���_�̃R�s�[���܂��B
-��:
+// サンプルの利用方法:
+1. ドライバは、x86またはx64フォルダーにあります。ドライバ　(aeroTAP.DLL, aeroTAP.ini )は、OpenNI/Driversフォルダーにコピーします。その他、サブファイル ( aeroTAP_CAM.DLL, eSPDI.DLL, OPENNI.INI)ファイルをアプリケーションと同じフォルダのコピーします。
+例:
    -[Program Folder]   
        - aeroTAP_CAM.dll
-       - eSPDI.dll
+       - eSPDI_DM.dll
        - OPENNI.ini
    -OpenNI2/Drivers
        - aeroTAP.dll
        - aeroTAP.ini 
 
-2. OPENNI.ini ��ҏW���āA [Device]�Z�N�V������ aeroTAP �h���C�o��ݒ肵�܂��B
-2. aeroTAP 3D USB �J������ڑ����܂��B
-3. �T���v���v���O���������s
-��: bin, bin.64�t�H���_��OpenNI2�R���p�C���ς݃T���v��������܂��BSimpleViewer.exe�����s�ł��܂��B
+2. OPENNI.ini を編集して、 [Device]セクションに aeroTAP ドライバを設定します。
+2. aeroTAP 3D USB カメラを接続します。
+3. サンプルプログラムを実行
+例: bin, bin.64フォルダにOpenNI2コンパイル済みサンプルがあります。SimpleViewer.exeを実行できます。
 
 
-// ���̑��q���g
-Q1. RAW�[�x�f�[�^���擾����ꍇ?   (PCL �� RTABmap�����s����ꍇ�Ȃ�)
-A1. aeroTAP.ini ��ҏW���ARAWData �p�����[�^�̒l�� 0 ��ݒ肵�܂��B��:  Filter=0
+// その他ヒント
+Q1. RAW深度データを取得する場合?   (PCL や RTABmapを実行する場合など)
+A1. aeroTAP.ini を編集し、RAWData パラメータの値に 0 を設定します。例:  Filter=0
 
-Q2. aeroTAP�J������2��ڑ����Ă���ꍇ�ɁA2�Ԗڂ̃J�������g���ꍇ�B
-A2. aeroTAP.ini ��ҏW���ACamNo �p�����[�^�̒l�� 1 ��ݒ肵�܂��B��:  CamNo=1
+Q2. aeroTAPカメラを2台接続している場合に、2番目のカメラを使う場合。
+A2. aeroTAP.ini を編集し、CamNo パラメータの値に 1 を設定します。例:  CamNo=1
 
-Q3. �J�������ォ�牺�Ɋp�x��t���Đݒu�����ꍇ�̕␳���@
-A3. aeroTAP.ini ��ҏW���AAngle �p�����[�^�̒l�Ɋp�x xx ( 0 ���� 45 �̒l )��ݒ肵�܂��B�Ⴆ�΁A15�����������ꍇ�AAngle=15
-Q4. �J������90����]���Đݒu����ꍇ
-A4. aeroTAP.ini ��ҏW���ARorate �p�����[�^�̒l��1�ɐݒ肵�܂��BOPENNI2����ƁA��]���Ă��𑜓x��VGA�̂܂܂ł��B��: Rotate=1
+Q3. カメラを上から下に角度を付けて設置した場合の補正方法
+A3. aeroTAP.ini を編集し、Angle パラメータの値に角度 xx ( 0 から 45 の値 )を設定します。例えば、15°下向けた場合、Angle=15
+Q4. カメラを90°回転して設置する場合
+A4. aeroTAP.ini を編集し、Rorate パラメータの値を1に設定します。OPENNI2を介すと、回転しても解像度はVGAのままです。例: Rotate=1
 
