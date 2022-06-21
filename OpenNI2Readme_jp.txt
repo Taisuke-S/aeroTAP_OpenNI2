@@ -2,15 +2,18 @@
 //
 //
 // aeroTAP OpenNI2 Driver
-// Last Updated: 2021.10.28
+// Last Updated: 2022.6.21
 //
-// Copyright 2021 nextEDGE Technology K.K. All rights reserved.
+// Copyright 2021,2022 nextEDGE Technology K.K. All rights reserved.
 //
 ///////////////////////////////////////////////
 
 ** Updates **
+2022.6.21 v2.4
+-Added aeroTAP 3D USB G2(DualBandIR) camera support
+-Improved and fixed Depthmap Filtering ( updated aeroTAP lib )
 2022.4.28 v2.4
--Added aeroTAP 3D USB G2 camera supprot
+-Added aeroTAP 3D USB G2 camera support
 -Improved Depthmap Filtering
 2021.10.13 v2.1
 -Fixed issue usinng camera with USB2.0 connection
